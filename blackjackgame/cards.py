@@ -8,14 +8,14 @@ Card = namedtuple('Card', ['rank', 'suit'])
 
 def _str_card(card):
     """Converts and returns a card as a formatted string"""
-    return f'{card._rank} of {card._suit}'
+    return f'{card.rank} of {card.suit}'
 
 # Assigns _str_card method as the __str__ method for Card
 Card.__str__ = _str_card
 
 
 class Deck:
-    """Initializes a standard 52-card deck and contains methods for gameplay"""    
+    """Standard 52-card deck and contains methods for gameplay"""    
 
     # All possible ranks and suits. Assigns a value to each rank
     ranks = ['Ace'] + [str(x) for x in range(2, 11)] + 'Jack Queen King'.split()
@@ -27,13 +27,13 @@ class Deck:
         """Create standard 52-card deck of Cards"""
         self._cards = [Card(rank, suit) for suit in self.suits for rank in self.ranks]
 
-    def __len__(self):
-        """Returns the number of cards in the deck"""
-        return len(self._cards)
-
     def __str__(self):
         """Returns the deck as a formatting string"""
         return ", ".join(map(str, self._cards))
+
+    def __len__(self):
+        """Returns the number of cards in the deck"""
+        return len(self._cards)
 
     def get_cards(self):
         """Returns the deck as a list"""
