@@ -1,18 +1,18 @@
 """This file contains the Card and Deck classes"""
 
+from collections import namedtuple
 from random import shuffle
 
+"""Card object - namedtuple with attributes rank and suit"""
+Card = namedtuple('Card', ['rank', 'suit'])
 
-class Card:
-    """Initializes a singular Card with given rank and suit"""
+def _str_card(card):
+    """Converts and returns a card as a formatted string"""
+    return f'{card._rank} of {card._suit}'
 
-    def __init__(self, rank, suit):
-        self._rank = rank
-        self._suit = suit
+# Assigns _str_card method as the __str__ method for Card
+Card.__str__ = _str_card
 
-    def __str__(self):
-        """Converts and returns a card as a formatted string"""
-        return f'{self._rank} of {self._suit}'
 
 class Deck:
     """Initializes a standard 52-card deck and contains methods for gameplay"""    
