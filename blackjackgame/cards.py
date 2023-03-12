@@ -8,9 +8,9 @@ class Card:
         self._rank = rank
         self._suit = suit
 
-    def _str_card(card):
+    def __str__(self):
          """Converts and returns a card as a formatted string"""
-         return
+         return f'{self._rank} of {self._suit}'
 
 class Deck:
     """Initializes a standard 52-card deck and contains methods for gameplay"""    
