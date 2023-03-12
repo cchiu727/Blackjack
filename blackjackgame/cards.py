@@ -1,21 +1,23 @@
+"""This file contains the Card and Deck classes"""
+
 from random import shuffle
 
-"""This file contains the Card and Deck classes"""
 
 class Card:
     """Initializes a singular Card with given rank and suit"""
+
     def __init__(self, rank, suit):
         self._rank = rank
         self._suit = suit
 
     def __str__(self):
-         """Converts and returns a card as a formatted string"""
-         return f'{self._rank} of {self._suit}'
+        """Converts and returns a card as a formatted string"""
+        return f'{self._rank} of {self._suit}'
 
 class Deck:
     """Initializes a standard 52-card deck and contains methods for gameplay"""    
 
-    """All possible ranks and suits. Assigns a value to each rank"""
+    # All possible ranks and suits. Assigns a value to each rank
     ranks = ['Ace'] + [str(x) for x in range(2, 11)] + 'Jack Queen King'.split()
     suits = '♣ ♦ ♥ ♠'.split()
     values = list(range(1, 11)) + [10, 10, 10]
@@ -38,14 +40,14 @@ class Deck:
         return self._cards
 
     def shuffle(self, num=1):
-         """Shuffles the deck n times (default 1 time)"""
-         for _ in range(num):
-              shuffle(self._cards)
+        """Shuffles the deck n times (default 1 time)"""
+        for _ in range(num):
+            shuffle(self._cards)
 
     def deal(self, num=1):
-         """Pops from deck and returns n cards (default 1 card)"""
-         return [self._cards.pop() for _ in range(num)]
+        """Pops from deck and returns n cards (default 1 card)"""
+        return [self._cards.pop() for _ in range(num)]
 
     def merge(self, deck):
-         """Merge the current deck with a given deck"""
-         self._cards = self._cards + deck._cards
+        """Merge the current deck with a given deck"""
+        self._cards = self._cards + deck._cards
