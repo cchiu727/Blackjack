@@ -1,6 +1,5 @@
 """This file contains the Player class and Dealer subclass"""
 
-import pickle
 from .cards import Deck
 
 
@@ -12,7 +11,6 @@ class Player:
         self._bankroll = bankroll
         self.hand = []
         self.wager_amount = 0
-        
 
     def __str__(self):
         """Returns player's info as a formatted string"""
@@ -23,16 +21,19 @@ class Player:
         """Adds amount to player's bankroll"""
         self._bankroll += amount
 
-    def sub_money(self, amount, bank):
-        """Deducts amount from player's bankroll to give to bank (Dealer)"""
+    def sub_money(self, amount):
+        """Deducts amount from player's bankroll"""
         self._bankroll -= amount
-        bank.add_money(amount)
+
+    def give_bank(self, amount, bank):
+        """Gives money to the bank (Dealer)"""
+        bank._bankroll += amount
 
     def set_wager(self, amount):
         """Assigns wager amount to player"""
         self.wager_amount = amount
 
-    def print_hand(self, card):
+    def print_hand(self):
         """Prints player hand"""
         for card in self.hand:
             print(card)
@@ -41,15 +42,16 @@ class Player:
         """Adds card to hand"""
         self.hand.extend(card)
 
-    def hand_value(self, card):
+    def hand_value(self):
         """Returns total value of cards in hand"""
         total = 0
         for card in self.hand:
-            if (card.rank == 'Ace' and total < 11):
+            if card.rank == "Ace" and total < 11:
                 total += 11
             else:
                 total += Deck.value_dict[card.rank]
         return total
+
 
 class Dealer(Player):
     """Dealer subclass from Player"""
