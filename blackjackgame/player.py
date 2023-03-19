@@ -28,7 +28,7 @@ class Player:
         self._bankroll -= amount
         bank.add_money(amount)
 
-    def get_wager(self, amount):
+    def set_wager(self, amount):
         """Assigns wager amount to player"""
         self.wager_amount = amount
 
