@@ -1,4 +1,4 @@
-"""This file contains the Player class and Dealer subclass"""
+"""This file contains the Player class and Dealer subclass to represent a user or Dealer AI"""
 
 from .cards import Deck
 
